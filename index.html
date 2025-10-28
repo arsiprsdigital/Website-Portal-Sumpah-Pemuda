@@ -38,15 +38,15 @@
 
         /* --- Header & Navigasi (Sticky & Blur) --- */
         header {
-            background: rgba(255, 255, 255, 0.95); /* Sedikit Transparansi */
-            backdrop-filter: blur(5px); /* Efek Blur untuk modernitas */
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(5px);
             height: var(--header-height);
             display: flex;
             align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Bayangan halus */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
         
         header .nav-content {
@@ -127,45 +127,12 @@
             box-shadow: 0 6px 15px rgba(218, 165, 32, 0.5);
         }
 
-        /* --- MODIFIKASI HERO SECTION (SLIDESHOW CONTAINER) --- */
+        /* --- MODIFIKASI: HERO HANYA SLIDESHOW --- */
         #hero {
-            background: var(--color-primary); /* Latar belakang default */
-            color: white;
-            min-height: 85vh; /* Sedikit lebih tinggi */
-            display: flex;
-            flex-direction: column; /* Konten di tengah secara vertikal */
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            background: var(--color-primary);
+            min-height: 70vh; /* Ketinggian disesuaikan (sebelumnya 85vh) */
             position: relative;
             overflow: hidden;
-        }
-
-        /* Gaya Teks Hero */
-        #hero .hero-content {
-            z-index: 20; /* Pastikan teks di atas gambar */
-            position: relative;
-            padding: 0 20px;
-        }
-        
-        #hero h2 {
-            font-size: 4em;
-            margin-bottom: 0px;
-            font-weight: 900;
-            line-height: 1.1;
-            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
-        }
-        
-        #hero h2 span {
-            color: var(--color-secondary);
-        }
-
-        #hero h3 {
-            font-size: 1.8em;
-            font-weight: 300;
-            margin-top: 10px;
-            margin-bottom: 30px;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
         }
 
         /* Slideshow Container */
@@ -175,7 +142,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; /* Di belakang konten teks */
+            z-index: 1; 
         }
 
         .slideshow-image {
@@ -186,22 +153,74 @@
             height: 100%;
             background-size: cover;
             background-position: center;
-            opacity: 0; /* Semua gambar tersembunyi secara default */
-            transition: opacity 1.5s ease-in-out; /* Transisi untuk slideshow */
+            opacity: 0; 
+            transition: opacity 1.5s ease-in-out;
+        }
+        
+        /* Overlay gelap untuk membuat gambar lebih sinematik */
+        .slideshow-container::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            z-index: 5;
         }
 
         .slideshow-image.active {
             opacity: 1; /* Gambar yang aktif akan terlihat */
         }
+        
+        /* --- SECTION BARU: INTRO DI BAWAH HERO --- */
+        #hero-intro {
+            background-color: var(--color-light); /* Latar belakang terang */
+            padding: 70px 0;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
 
+        #hero-intro p {
+            font-weight: 600;
+            font-size: 1.1em;
+            letter-spacing: 2px;
+            color: var(--color-primary);
+            margin-bottom: 10px;
+        }
+
+        #hero-intro h2 {
+            font-size: 4.5em; /* Ukuran font disesuaikan */
+            margin: 10px 0;
+            font-weight: 900;
+            line-height: 1.1;
+            color: var(--color-dark); /* Warna teks diubah */
+        }
+        
+        #hero-intro h2 span {
+            color: var(--color-primary); 
+        }
+
+        #hero-intro h3 {
+            font-size: 1.6em; /* Ukuran font disesuaikan */
+            font-weight: 300;
+            margin-top: 15px;
+            margin-bottom: 40px;
+            color: #555; /* Warna teks diubah */
+        }
 
         /* --- Konten & Gaya Umum --- */
         section {
             padding: 80px 0;
         }
 
+        /* Menghapus background agar #hero-intro dan #sejarah menyatu */
         section:nth-child(even) {
-            background-color: var(--color-light);
+            background-color: white; /* Diubah dari light */
+        }
+        
+        #makna {
+             background-color: var(--color-light); /* Diberi background light */
         }
 
         h4 {
@@ -301,7 +320,7 @@
             color: var(--color-secondary);
         }
         
-        /* CSS untuk Halaman Makna Gambar */
+        /* CSS untuk Halaman Makna Gambar (Tetap ada di sini jika diperlukan) */
         .image-meaning-card {
             background: white;
             border-radius: 12px;
@@ -358,7 +377,8 @@
                 <ul>
                     <li><a href="index.html">Beranda</a></li>
                     <li><a href="#sejarah">Sejarah</a></li>
-                    <li><a href="makna-visual.html">Makna Visual</a></li> <li><a href="#makna">Makna 2025</a></li>
+                    <li><a href="makna-visual.html">Makna Visual</a></li>
+                    <li><a href="#makna">Makna 2025</a></li>
                     <li><a href="#program">Program</a></li>
                     <li><a href="#galeri">Galeri</a></li>
                     <li><a class="cta-button" href="#">**Daftar Kolaborasi**</a></li>
@@ -369,17 +389,18 @@
 
     <section id="hero">
         <div class="slideshow-container">
-            <div class="slideshow-image active" style="background-image: url('https://i.imgur.com/LN1T3Gl.png');"></div>
-            <div class="slideshow-image" style="background-image: url('https://i.imgur.com/HqPJW1Y.png');"></div>
-            <div class="slideshow-image" style="background-image: url('https://i.imgur.com/2IIEr6g.png');"></div>
-            <div class="slideshow-image" style="background-image: url('https://i.imgur.com/owHstLU.png');"></div>
-            <div class="slideshow-image" style="background-image: url('https://i.imgur.com/Zgwm4kM.png');"></div>
+            <div class="slideshow-image active" style="background-image: url('URL_GAMBAR_1_PERMANEN');"></div>
+            <div class="slideshow-image" style="background-image: url('URL_GAMBAR_2_PERMANEN');"></div>
+            <div class="slideshow-image" style="background-image: url('URL_GAMBAR_3_PERMANEN');"></div>
+            <div class="slideshow-image" style="background-image: url('URL_GAMBAR_4_PERMANEN');"></div>
+            <div class="slideshow-image" style="background-image: url('URL_GAMBAR_5_PERMANEN');"></div>
         </div>
+        </section>
 
+    <section id="hero-intro">
         <div class="hero-content">
-            <p style="font-weight: 600; font-size: 1.1em; letter-spacing: 2px;">SUMPAH PEMUDA 97 TAHUN</p>
-            <h2><span>Bergerak,</span></h2>
-            <h2 style="font-size: 5em;">Bersatu.</h2>
+            <p>SUMPAH PEMUDA 97 TAHUN</p>
+            <h2><span>Bergerak,</span> Bersatu.</h2>
             <h3>"Pemuda Pemudi Bergerak, Indonesia Bersatu" - 28 Oktober 2025</h3>
             <a href="#program" class="cta-button" style="background: var(--color-secondary); color: var(--color-dark); font-size: 1.1em; padding: 12px 30px;">
                 Temukan Aksi Nyata Kami <i class="fas fa-arrow-right"></i>
@@ -396,7 +417,7 @@
                 "Kami putra dan putri Indonesia, mengaku **berbangsa yang satu, bangsa Indonesia**."<br>
                 "Kami putra dan putri Indonesia, menjunjung **bahasa persatuan, bahasa Indonesia**."
             </blockquote>
-            <p style="text-align: center; max-width: 800px; margin: auto;">Semangat persatuan ini telah diuji oleh zaman. Di tahun 2025, kita tegaskan kembali relevansinya di era digital dan globalisasi.</p>
+            <p style="text-align: center; max-width: 800px; margin: auto;">Semangat persatuan ini telah diuji oleh zaman. Hari ini, 28 Oktober 2025, kita tegaskan kembali relevansinya di era digital dan globalisasi.</p>
         </div>
     </section>
 
@@ -484,12 +505,20 @@
         function showSlides() {
             let i;
             let slides = document.getElementsByClassName("slideshow-image");
+            // Jika tidak ada gambar, hentikan fungsi
+            if (slides.length === 0) return;
+            
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.opacity = "0"; // Sembunyikan semua gambar
             }
             slideIndex++;
             if (slideIndex > slides.length) {slideIndex = 1} // Kembali ke gambar pertama
-            slides[slideIndex-1].style.opacity = "1"; // Tampilkan gambar aktif
+            
+            // Periksa apakah slide[slideIndex-1] ada sebelum mengakses style
+            if (slides[slideIndex-1]) {
+                 slides[slideIndex-1].style.opacity = "1"; // Tampilkan gambar aktif
+            }
+           
             setTimeout(showSlides, 5000); // Ganti gambar setiap 5 detik
         }
     </script>
