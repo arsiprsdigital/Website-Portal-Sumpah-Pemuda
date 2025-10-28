@@ -3,324 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Makna Visual Sumpah Pemuda 2025</title>
+    <title>Makna Visual | Sumpah Pemuda 2025</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* Variabel Warna (Pastikan sama dengan index.html) */
+        /* Variabel Warna & Font */
         :root {
             --color-primary: #8B0000;      /* Maroon/Crimson Tua */
             --color-secondary: #DAA520;    /* Goldenrod (Emas) */
             --color-dark: #1f1f1f;
             --color-light: #f9f9f9;
             --font-main: 'Inter', sans-serif;
-            --header-height: 80px;
         }
 
-        /* Reset & Global */
+        /* Global & Reset */
         body {
             font-family: var(--font-main);
-            margin: 0;
-            padding: 0;
             color: var(--color-dark);
-            background-color: white;
             line-height: 1.7;
             text-rendering: optimizeLegibility;
+            background-color: white;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1300px;
-            margin: auto;
-            padding: 20px 0;
-        }
-
-        /* --- Header & Navigasi (Sama dengan index.html) --- */
-        header {
-            background: rgba(255, 255, 255, 0.95);
+        /* --- Custom Navigasi (Sama dengan index.html) --- */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.95) !important;
             backdrop-filter: blur(5px);
-            height: var(--header-height);
-            display: flex;
-            align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
         }
-        
-        header .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-        }
+        .nav-link { font-weight: 600; position: relative; color: var(--color-dark) !important; transition: color 0.3s; }
+        .nav-link:hover { color: var(--color-primary) !important; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 3px; bottom: -5px; left: 0; background-color: var(--color-secondary); transition: width 0.3s ease-out; }
+        .nav-link:hover::after { width: 100%; }
+        .cta-button { background: var(--color-primary); color: white !important; padding: 10px 25px; border-radius: 5px; font-weight: 700; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(139, 0, 0, 0.3); margin-left: 15px; }
+        .cta-button:hover { background: var(--color-secondary); color: var(--color-dark) !important; box-shadow: 0 6px 15px rgba(218, 165, 32, 0.5); }
 
-        header .logo {
-            display: flex;
-            align-items: center;
-        }
+        /* Judul Section */
+        .section-title { font-size: 2.2em; color: var(--color-primary); font-weight: 700; text-align: center; margin-bottom: 10px; }
+        .section-subtitle { text-align: center; margin-bottom: 60px; color: #666; font-weight: 300; }
 
-        header .logo h1 {
-            margin: 0;
-            font-size: 1.8em;
-            color: var(--color-primary);
-            font-weight: 900;
-            margin-left: 10px;
-        }
-        
-        header nav ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        header nav ul li {
-            margin-left: 30px;
-        }
-        
-        header nav ul li a {
-            color: var(--color-dark);
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: 600;
-            position: relative;
-            transition: color 0.3s;
-        }
-        
-        header nav ul li a:hover {
-            color: var(--color-primary);
-        }
-        
-        header nav ul li a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 3px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--color-secondary);
-            transition: width 0.3s ease-out;
-        }
-
-        header nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .cta-button {
-            background: var(--color-primary);
-            color: white;
-            padding: 10px 25px;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-left: 30px;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(139, 0, 0, 0.3);
-        }
-
-        .cta-button:hover {
-            background: var(--color-secondary);
-            color: var(--color-dark);
-            box-shadow: 0 6px 15px rgba(218, 165, 32, 0.5);
-        }
-
-        /* --- Gaya Khusus Halaman Makna Visual --- */
-        .hero-makna {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), url('https://via.placeholder.com/1920x400/8B0000/FFFFFF?text=Latar+Belakang+Makna+Visual');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            padding: 100px 0;
-            text-align: center;
-        }
-
-        .hero-makna h2 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            font-weight: 900;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
-        }
-
-        .hero-makna p {
-            font-size: 1.2em;
-            max-width: 800px;
-            margin: auto;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-        }
-
-        .image-meaning-card {
-            background: white;
+        /* --- Card Makna Visual --- */
+        .makna-card {
+            background: var(--color-light); 
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
             padding: 30px;
             margin-bottom: 40px;
-            text-align: left;
-            display: flex;
-            align-items: center;
-            gap: 30px;
             border-left: 5px solid var(--color-primary);
         }
 
-        .image-meaning-card.reverse-layout {
-            flex-direction: row-reverse;
-            border-right: 5px solid var(--color-primary);
+        .makna-card.reverse-layout {
             border-left: none;
+            border-right: 5px solid var(--color-primary);
         }
 
-        .image-meaning-card img {
-            max-width: 40%;
+        .makna-card img {
+            max-width: 100%;
             height: auto;
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         }
 
-        .image-meaning-card .text-content {
-            flex: 1;
-        }
-
-        .image-meaning-card h5 {
+        .makna-card h5 {
             font-size: 1.8em;
             color: var(--color-primary);
             margin-bottom: 10px;
             font-weight: 700;
         }
 
-        .image-meaning-card p {
-            font-size: 1.05em;
-            color: var(--color-dark);
-        }
-        
-        /* --- Footer (Sama dengan index.html) --- */
-        footer {
-            background: var(--color-dark);
-            color: var(--color-light);
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        footer .social a {
-            color: var(--color-light);
-            font-size: 1.8em;
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-
-        footer .social a:hover {
-            color: var(--color-secondary);
-        }
-
-        footer .footer-links a {
-            color: var(--color-light);
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 0.95em;
-            transition: color 0.3s;
-        }
-        
-        footer .footer-links a:hover {
-            color: var(--color-secondary);
-        }
+        /* Footer */
+        .footer-links a { color: var(--color-light); text-decoration: none; margin: 0 10px; font-size: 0.95em; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--color-secondary); }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container nav-content">
-            <div class="logo">
-                <i class="fas fa-handshake" style="font-size: 2em; color: var(--color-primary);"></i>
-                <h1>SP **2025**</h1>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <i class="fas fa-handshake me-2" style="font-size: 2em; color: var(--color-primary);"></i>
+                    <h1 class="h3 m-0" style="color: var(--color-primary); font-weight: 900;">SP 2025</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html#hero-intro">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#sejarah">Sejarah</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="makna-visual.html">Makna Visual</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#makna">Makna 2025</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#program">Program</a></li>
+                        <li class="nav-item"><a class="nav-link" href="galeri.html">Galeri</a></li>
+                        <li class="nav-item d-grid d-lg-block mt-2 mt-lg-0">
+                            <a class="cta-button btn" href="#">**Daftar Kolaborasi**</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="index.html#sejarah">Sejarah</a></li>
-                    <li><a href="makna-visual.html">Makna Visual</a></li>
-                    <li><a href="index.html#makna">Makna 2025</a></li>
-                    <li><a href="index.html#program">Program</a></li>
-                    <li><a href="index.html#galeri">Galeri</a></li>
-                    <li><a class="cta-button" href="#">**Daftar Kolaborasi**</a></li>
-                </ul>
-            </nav>
-        </div>
+        </nav>
     </header>
 
-    <section class="hero-makna">
+    <section id="makna-visual" class="py-5">
         <div class="container">
-            <h2>Di Balik Setiap Garis: Makna Visual Perjuangan</h2>
-            <p>Setiap gambar vektor yang menghiasi portal ini adalah representasi dari semangat, nilai, dan cita-cita luhur Sumpah Pemuda. Mari selami filosofi di balik visual inspiratif ini.</p>
-        </div>
-    </section>
-
-    <section id="detail-makna">
-        <div class="container">
-            <div class="image-meaning-card">
-                <img src="https://imgur.com/LN1T3Gl" alt="Bara Semangat '28: Mengukir Masa Depan">
-                <div class="text-content">
-                    <h5>1. Bara Semangat '28: Mengukir Masa Depan</h5>
-                    <p>Ilustrasi ini menggambarkan pemuda-pemudi yang bergerak maju, melambangkan **progresivitas dan semangat pantang menyerah** yang diwarisi dari Sumpah Pemuda 1928. Siluet Monas dengan cahaya keemasan menyimbolkan **harapan dan kejayaan masa depan Indonesia** yang dibangun oleh generasi muda. Garis-garis dinamis menunjukkan bahwa pergerakan ini terarah dan penuh energi.</p>
+            <h4 class="section-title">✨ Makna Visual Sumpah Pemuda 2025</h4>
+            <p class="section-subtitle">Membedah setiap elemen logo dan tema visual yang merepresentasikan semangat **Bergerak, Bersatu**.</p>
+            
+            <div class="makna-card row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <img src="URL_GAMBAR_LOGO_UTAMA" alt="Logo Sumpah Pemuda 2025" class="img-fluid">
+                </div>
+                <div class="col-lg-7">
+                    <h5>Logo Utama: Energi Persatuan</h5>
+                    <p>Logo ini didesain dengan garis dinamis yang saling terhubung, melambangkan **perjalanan dan pergerakan** pemuda-pemudi dari seluruh penjuru Indonesia. Warna merah marun melambangkan keberanian, sedangkan aksen emas mewakili kemuliaan dan cita-cita luhur bangsa.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="fas fa-check-circle text-primary me-2"></i> **Garis Memutar:** Siklus inovasi dan semangat yang tak pernah padam.</li>
+                        <li><i class="fas fa-check-circle text-primary me-2"></i> **Warna Emas:** Kebanggaan dan prestasi pemuda di kancah global.</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="image-meaning-card reverse-layout">
-                <img src="https://imgur.com/HqPJW1Y" alt="Simfoni Persatuan: Ragam Pemuda, Satu Indonesia">
-                <div class="text-content">
-                    <h5>2. Simfoni Persatuan: Ragam Pemuda, Satu Indonesia</h5>
-                    <p>Gambar ini merepresentasikan **keberagaman pemuda Indonesia yang bersatu dalam kolaborasi**. Berbagai latar belakang etnis yang saling bergandengan tangan membentuk harmoni, dengan logo Sumpah Pemuda 2025 sebagai pusat kekuatan. Ini adalah visualisasi dari **Bhineka Tunggal Ika** yang dipegang teguh oleh pemuda-pemudi di era modern.</p>
+            <div class="makna-card reverse-layout row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <img src="URL_GAMBAR_TIPOGRAFI_TEMA" alt="Tipografi Tema 2025" class="img-fluid">
                 </div>
-            </div>
-
-            <div class="image-meaning-card">
-                <img src="https://imgur.com/2IIEr6g" alt="Obor Digital: Menerangi Kemajuan Bangsa">
-                <div class="text-content">
-                    <h5>3. Obor Digital: Menerangi Kemajuan Bangsa</h5>
-                    <p>Ilustrasi ini menunjukkan **peran pemuda dalam memajukan bangsa melalui inovasi dan teknologi**. Obor digital melambangkan **semangat pencerahan dan pengetahuan** di era serba digital. Pemuda yang fokus di depan layar adalah agen perubahan yang memanfaatkan teknologi untuk menciptakan solusi dan kemajuan.</p>
+                <div class="col-lg-7">
+                    <h5>Tipografi: Tegas dan Fleksibel</h5>
+                    <p>Pemilihan jenis huruf (font) yang tebal dan modern mencerminkan ketegasan sikap pemuda dalam menghadapi tantangan zaman. Kontras antara huruf kapital dan huruf kecil melambangkan inklusivitas dan keragaman suku bangsa yang bersatu dalam satu tujuan.</p>
+                    <ul class="list-unstyled mt-3">
+                        <li><i class="fas fa-hand-point-right text-primary me-2"></i> **'Bergerak':** Ditekankan dengan bentuk kursif, menyiratkan kecepatan aksi.</li>
+                        <li><i class="fas fa-hand-point-right text-primary me-2"></i> **'Bersatu':** Menggunakan *bold* dan tebal, melambangkan kekuatan kolektif.</li>
+                    </ul>
                 </div>
-            </div>
-
-            <div class="image-meaning-card reverse-layout">
-                <img src="https://imgur.com/owHstLU" alt="Penjaga Lingkungan: Komitmen Pemuda untuk Bumi">
-                <div class="text-content">
-                    <h5>4. Penjaga Lingkungan: Komitmen Pemuda untuk Bumi</h5>
-                    <p>Vektor ini menyoroti **komitmen pemuda terhadap keberlanjutan lingkungan**. Aksi menanam pohon dan membersihkan lingkungan adalah wujud nyata dari tanggung jawab sosial pemuda untuk menjaga "tanah Indonesia" demi masa depan yang lebih hijau. Simbol-simbol alam dan warna *eco-friendly* mempertegas pesan ini.</p>
-                </div>
-            </div>
-
-            <div class="image-meaning-card">
-                <img src="https://imgur.com/Zgwm4kM" alt="Harmoni Nusantara: Festival Budaya Pemuda">
-                <div class="text-content">
-                    <h5>5. Harmoni Nusantara: Festival Budaya Pemuda</h5>
-                    <p>Gambar ini merayakan **kekayaan seni dan budaya Indonesia yang diusung oleh pemuda**. Ekspresi tari dan musik tradisional yang modern melambangkan bagaimana pemuda melestarikan warisan budaya sambil berinovasi. Ini adalah visualisasi dari **persatuan dalam kebhinekaan budaya** yang terus hidup dan berkembang.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <footer>
-        <div class="container">
-            <div style="margin-bottom: 25px;">
-                <h1 style="color: var(--color-secondary); font-size: 2em; margin: 0;">SP 2025</h1>
-                <p style="margin-top: 5px;">"Pemuda Pemudi Bergerak, Indonesia Bersatu"</p>
             </div>
             
-            <div class="footer-links" style="margin-bottom: 20px;">
+            <div class="makna-card row align-items-center">
+                <div class="col-lg-5 mb-4 mb-lg-0">
+                    <img src="URL_GAMBAR_PALET_WARNA" alt="Palet Warna Resmi 2025" class="img-fluid">
+                </div>
+                <div class="col-lg-7">
+                    <h5>Palet Warna Resmi: Tradisi dan Digital</h5>
+                    <p>Palet warna didominasi oleh perpaduan warna-warna tradisional Indonesia (Merah Marun, Emas, Hijau Tua) yang dikombinasikan dengan warna sekunder yang terang (biru digital, oranye). Ini menjembatani warisan sejarah dengan visi masa depan berbasis digital.</p>
+                    <p>Palet ini adalah panduan visual untuk semua materi komunikasi dan publikasi resmi acara Sumpah Pemuda 2025.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <footer class="py-5" style="background: var(--color-dark); color: var(--color-light);">
+        <div class="container text-center">
+            <div class="mb-4">
+                <h1 class="text-warning fs-3 mb-1">SP 2025</h1>
+                <p class="small text-white-50">"Pemuda Pemudi Bergerak, Indonesia Bersatu"</p>
+            </div>
+            
+            <div class="footer-links mb-4">
                 <a href="#">Tentang Kami</a> |
                 <a href="#">Unduh Logo Resmi</a> |
                 <a href="#">Layanan Pers</a> |
                 <a href="#">Kontak</a>
             </div>
             
-            <div class="social" style="margin-bottom: 20px;">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <div class="social mb-4">
+                <a href="#" class="text-white-50 mx-2 fs-4 transition-3s"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white-50 mx-2 fs-4 transition-3s"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white-50 mx-2 fs-4 transition-3s"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="text-white-50 mx-2 fs-4 transition-3s"><i class="fab fa-linkedin-in"></i></a>
             </div>
 
-            <p style="font-size: 0.85em; opacity: 0.7;">&copy; 2025 Panitia Nasional Hari Sumpah Pemuda. Didukung penuh oleh Kemenpora RI.</p>
+            <p class="small opacity-75">&copy; 2025 Panitia Nasional Hari Sumpah Pemuda. Didukung penuh oleh Kemenpora RI.</p>
         </div>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
 </body>
 </html>
