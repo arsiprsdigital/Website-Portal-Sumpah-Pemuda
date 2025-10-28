@@ -4,81 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sumpah Pemuda 2025 | Pemuda Pemudi Bergerak, Indonesia Bersatu</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
+        /* Variabel Warna */
         :root {
-            --color-primary: #800000; /* Merah Tua/Marun */
-            --color-secondary: #FFD700; /* Emas Keemasan */
-            --color-dark: #333;
-            --color-light: #f4f4f4;
-            --font-main: 'Montserrat', sans-serif;
+            --color-primary: #8B0000;      /* Maroon/Crimson Tua */
+            --color-secondary: #DAA520;    /* Goldenrod (Emas) */
+            --color-dark: #1f1f1f;
+            --color-light: #f9f9f9;
+            --font-main: 'Inter', sans-serif;
+            --header-height: 80px;
         }
 
+        /* Reset & Global */
         body {
             font-family: var(--font-main);
             margin: 0;
             padding: 0;
             color: var(--color-dark);
             background-color: white;
-            line-height: 1.6;
+            line-height: 1.7;
+            text-rendering: optimizeLegibility;
         }
 
         .container {
             width: 90%;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: auto;
-            overflow: hidden;
             padding: 20px 0;
         }
 
-        /* --- Header & Navigasi --- */
+        /* --- Header & Navigasi (Sticky & Transparan) --- */
         header {
-            background: white;
-            color: var(--color-dark);
-            padding: 10px 0;
-            border-bottom: 3px solid var(--color-secondary);
+            background: rgba(255, 255, 255, 0.95); /* Sedikit Transparansi */
+            backdrop-filter: blur(5px); /* Efek Blur untuk modernitas */
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Bayangan halus */
         }
         
+        header .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
         header .logo {
-            float: left;
             display: flex;
             align-items: center;
         }
 
         header .logo h1 {
             margin: 0;
-            font-size: 1.5em;
+            font-size: 1.8em;
             color: var(--color-primary);
             font-weight: 900;
             margin-left: 10px;
         }
         
-        header nav {
-            float: right;
-        }
-        
         header nav ul {
+            display: flex;
+            list-style: none;
             margin: 0;
             padding: 0;
-            list-style: none;
         }
         
         header nav ul li {
-            display: inline;
-            margin-left: 25px;
+            margin-left: 30px;
         }
         
         header nav ul li a {
             color: var(--color-dark);
             text-decoration: none;
-            text-transform: uppercase;
-            font-size: 14px;
-            font-weight: 700;
+            font-size: 15px;
+            font-weight: 600;
+            position: relative;
             transition: color 0.3s;
         }
         
@@ -86,52 +93,78 @@
             color: var(--color-primary);
         }
         
+        /* Underline effect elegan */
+        header nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--color-secondary);
+            transition: width 0.3s ease-out;
+        }
+
+        header nav ul li a:hover::after {
+            width: 100%;
+        }
+
         .cta-button {
-            background: var(--color-secondary);
-            color: var(--color-dark);
-            padding: 8px 15px;
+            background: var(--color-primary);
+            color: white;
+            padding: 10px 25px;
             text-decoration: none;
             border-radius: 5px;
-            margin-left: 20px;
+            margin-left: 30px;
             font-weight: 700;
-            transition: background 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(139, 0, 0, 0.3);
         }
 
         .cta-button:hover {
-            background: #e6c300;
+            background: var(--color-secondary);
+            color: var(--color-dark);
+            box-shadow: 0 6px 15px rgba(218, 165, 32, 0.5);
         }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section (Eksklusif) --- */
         #hero {
-            background: url('https://via.placeholder.com/1920x800/800000/FFFFFF?text=Visual+Pemuda+Kolaborasi+2025') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('https://via.placeholder.com/1920x900/400000/FFFFFF?text=Visual+Pemuda+Inspiratif+2025');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
             color: white;
-            min-height: 600px;
+            min-height: 80vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
+            align-items: flex-start; /* Konten ke kiri */
+            padding: 0 5%;
+            text-align: left;
         }
 
         #hero h2 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            font-size: 4.5em;
+            margin-bottom: 0px;
+            font-weight: 900;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.9);
+            line-height: 1.1;
+        }
+        
+        #hero h2 span {
+            color: var(--color-secondary);
         }
 
         #hero h3 {
-            font-size: 1.8em;
-            font-weight: 400;
-            margin-bottom: 40px;
-            background: rgba(0, 0, 0, 0.5);
-            padding: 5px 15px;
+            font-size: 2em;
+            font-weight: 300;
+            margin-top: 10px;
+            margin-bottom: 30px;
         }
 
-        /* --- Sections --- */
+        /* --- Konten & Gaya Umum --- */
         section {
-            padding: 60px 0;
-            text-align: center;
+            padding: 80px 0;
         }
 
         section:nth-child(even) {
@@ -139,61 +172,83 @@
         }
 
         h4 {
-            font-size: 2em;
+            font-size: 2.2em;
             color: var(--color-primary);
-            margin-bottom: 40px;
-            border-bottom: 3px solid var(--color-secondary);
-            display: inline-block;
-            padding-bottom: 5px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            margin-bottom: 60px;
+            color: #666;
+            font-weight: 300;
+        }
+        
+        /* Blockquote elegan */
+        #sejarah blockquote {
+            font-size: 1.3em;
+            border-left: 6px solid var(--color-secondary);
+            padding: 20px 30px;
+            margin: 40px auto;
+            max-width: 900px;
+            font-style: italic;
+            color: var(--color-dark);
+            background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
         }
 
-        /* --- Program Card Style --- */
+        /* --- Program Card (Profesional) --- */
         .program-grid {
             display: flex;
-            justify-content: space-around;
-            gap: 20px;
-            margin-top: 30px;
+            justify-content: space-between;
+            gap: 30px;
+            text-align: center;
         }
 
         .program-card {
             background: white;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            width: 30%;
-            transition: transform 0.3s;
+            padding: 40px 20px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            width: 33%;
+            transition: all 0.4s ease;
+            border-top: 5px solid var(--color-primary);
         }
 
         .program-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            border-top-color: var(--color-secondary);
         }
 
         .program-card i {
-            font-size: 3em;
+            font-size: 3.5em;
             color: var(--color-secondary);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .program-card h5 {
             color: var(--color-primary);
-            font-size: 1.2em;
-            margin-bottom: 10px;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: 700;
         }
 
-        /* --- Footer --- */
+        /* --- Footer (Dark Mode Elegan) --- */
         footer {
             background: var(--color-dark);
-            color: white;
-            padding: 30px 0;
+            color: var(--color-light);
+            padding: 50px 0;
             text-align: center;
-            border-top: 5px solid var(--color-secondary);
         }
 
         footer .social a {
-            color: white;
-            font-size: 1.5em;
-            margin: 0 10px;
+            color: var(--color-light);
+            font-size: 1.8em;
+            margin: 0 15px;
             transition: color 0.3s;
         }
 
@@ -202,30 +257,34 @@
         }
 
         footer .footer-links a {
-            color: white;
+            color: var(--color-light);
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 0.9em;
+            margin: 0 20px;
+            font-size: 0.95em;
+            transition: color 0.3s;
         }
-
+        
+        footer .footer-links a:hover {
+            color: var(--color-secondary);
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container">
+        <div class="container nav-content">
             <div class="logo">
-                <i class="fas fa-unity" style="font-size: 2em; color: var(--color-primary);"></i>
-                <h1>Sumpah Pemuda **2025**</h1>
+                <i class="fas fa-handshake" style="font-size: 2em; color: var(--color-primary);"></i>
+                <h1>SP **2025**</h1>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#hero">Beranda</a></li>
                     <li><a href="#sejarah">Sejarah</a></li>
-                    <li><a href="#makna">Tema & Makna</a></li>
-                    <li><a href="#program">Program 2025</a></li>
+                    <li><a href="#makna">Makna 2025</a></li>
+                    <li><a href="#program">Program</a></li>
                     <li><a href="#galeri">Galeri</a></li>
-                    <li><a class="cta-button" href="#">Ayo Berkolaborasi</a></li>
+                    <li><a class="cta-button" href="#">**Daftar Kolaborasi**</a></li>
                 </ul>
             </nav>
         </div>
@@ -233,40 +292,43 @@
 
     <section id="hero">
         <h2>SUMPAH PEMUDA 97 TAHUN</h2>
-        <h3>"Pemuda Pemudi Bergerak, Indonesia Bersatu"</h3>
-        <p style="font-size: 1.2em;">28 OKTOBER 2025</p>
+        <h2 style="font-size: 5em;"><span>Bergerak,</span> Bersatu.</h2>
+        <h3>"Pemuda Pemudi Bergerak, Indonesia Bersatu" - 28 Oktober 2025</h3>
+        <a href="#program" class="cta-button" style="background: var(--color-secondary); color: var(--color-dark); font-size: 1.1em;">Temukan Aksi Nyata Kami <i class="fas fa-arrow-right"></i></a>
     </section>
 
     <section id="sejarah">
         <div class="container">
-            <h4>📜 Ikrar 1928: Pondasi Persatuan</h4>
-            <blockquote style="font-size: 1.4em; border-left: 5px solid var(--color-primary); padding-left: 20px; margin: 30px auto; max-width: 800px; font-style: italic;">
+            <h4>Pondasi Kuat: Ikrar Sumpah Pemuda 1928</h4>
+            <p class="section-subtitle">Tiga janji yang menjadi landasan utama persatuan bangsa Indonesia.</p>
+            <blockquote>
                 "Kami putra dan putri Indonesia, mengaku **bertumpah darah yang satu, tanah Indonesia**."<br>
                 "Kami putra dan putri Indonesia, mengaku **berbangsa yang satu, bangsa Indonesia**."<br>
                 "Kami putra dan putri Indonesia, menjunjung **bahasa persatuan, bahasa Indonesia**."
             </blockquote>
-            <p>Sumpah Pemuda adalah janji suci pemuda-pemudi Indonesia untuk bersatu di atas keragaman. Semangat inilah yang terus kita kobarkan hingga tahun 2025!</p>
+            <p style="text-align: center; max-width: 800px; margin: auto;">Semangat persatuan ini telah diuji oleh zaman. Di tahun 2025, kita tegaskan kembali relevansinya di era digital dan globalisasi.</p>
         </div>
     </section>
 
     <section id="makna">
         <div class="container">
-            <h4>💡 Relevansi Sumpah Pemuda di Tahun 2025</h4>
+            <h4>Makna Sumpah Pemuda Kontemporer</h4>
+            <p class="section-subtitle">Menerjemahkan Ikrar 1928 ke dalam aksi nyata yang progresif dan kolaboratif.</p>
             <div class="program-grid">
                 <div class="program-card">
-                    <i class="fas fa-globe-asia"></i>
-                    <h5>Satu Tanah Air (Digital & Nyata)</h5>
-                    <p>Menjaga kedaulatan digital dan lingkungan Indonesia. Melawan hoaks dan menjaga keutuhan bangsa di ruang maya.</p>
+                    <i class="fas fa-lightbulb"></i>
+                    <h5>Progresif & Inovatif</h5>
+                    <p>Pemuda sebagai motor penggerak inovasi di berbagai sektor, berani mengambil risiko untuk kemajuan bangsa.</p>
                 </div>
                 <div class="program-card">
-                    <i class="fas fa-handshake"></i>
-                    <h5>Satu Bangsa (Kolaborasi Aksi)</h5>
-                    <p>Menerjemahkan persatuan menjadi aksi nyata melalui kolaborasi lintas sektor (teknologi, sosial, budaya) untuk kemajuan.</p>
+                    <i class="fas fa-users-cog"></i>
+                    <h5>Kolaborasi Lintas Batas</h5>
+                    <p>Persatuan dalam tindakan nyata, bekerja sama lintas daerah dan disiplin untuk memecahkan masalah nasional.</p>
                 </div>
                 <div class="program-card">
-                    <i class="fas fa-comments"></i>
-                    <h5>Bahasa Persatuan (Etika Berkomunikasi)</h5>
-                    <p>Menjadikan Bahasa Indonesia sebagai media komunikasi yang positif, santun, dan produktif, mencerminkan karakter bangsa.</p>
+                    <i class="fas fa-shield-alt"></i>
+                    <h5>Ketahanan Jati Diri</h5>
+                    <p>Menjaga etika, literasi digital, dan integritas di tengah gempuran informasi dan budaya luar.</p>
                 </div>
             </div>
         </div>
@@ -274,43 +336,53 @@
 
     <section id="program">
         <div class="container">
-            <h4>🚀 Program Unggulan Pemuda 2025</h4>
-            <p style="margin-bottom: 40px;">Wujudkan janji persatuan melalui program-program inovatif dan berkelanjutan.</p>
+            <h4>Agenda Aksi Pemuda 2025</h4>
+            <p class="section-subtitle">Waktunya bergerak, wujudkan janji persatuan melalui program berdampak.</p>
             <div class="program-grid">
-                <div class="program-card">
-                    <i class="fas fa-lightbulb"></i>
-                    <h5>National Youth Hackathon</h5>
-                    <p>Lomba inovasi digital dan *startup* untuk solusi masalah nasional. (Inovasi Digital)</p>
+                <div class="program-card" style="border-top-color: #DAA520;">
+                    <i class="fas fa-code"></i>
+                    <h5>Youth Tech Summit & Hackathon</h5>
+                    <p>Puncak kompetisi teknologi untuk menemukan solusi cerdas berbasis digital.</p>
                 </div>
-                <div class="program-card">
-                    <i class="fas fa-tree"></i>
-                    <h5>Aksi Lingkungan Serentak</h5>
-                    <p>Gerakan bersih-bersih dan penanaman pohon yang melibatkan pemuda dari Sabang sampai Merauke. (Kolaborasi Lingkungan)</p>
+                <div class="program-card" style="border-top-color: #008000;">
+                    <i class="fas fa-leaf"></i>
+                    <h5>Gerakan Ekologi Nasional</h5>
+                    <p>Aksi serentak pemuda dalam mitigasi bencana dan program keberlanjutan lingkungan.</p>
                 </div>
-                <div class="program-card">
-                    <i class="fas fa-palette"></i>
-                    <h5>Pekan Raya Kebudayaan</h5>
-                    <p>Festival seni dan budaya yang menampilkan keragaman Indonesia dan kreativitas pemuda. (Seni & Budaya)</p>
+                <div class="program-card" style="border-top-color: #FFA500;">
+                    <i class="fas fa-microphone-alt"></i>
+                    <h5>Festival Suara Budaya</h5>
+                    <p>Platform ekspresi seni dan budaya daerah yang dikemas secara modern dan inklusif.</p>
                 </div>
             </div>
-            <a href="#" class="cta-button" style="margin-top: 50px; font-size: 1.1em; background: var(--color-primary); color: white;">Lihat Detail Program Selengkapnya</a>
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="#" class="cta-button" style="background: var(--color-primary); color: white; font-size: 1.1em;">Lihat Panduan & Mekanisme Program <i class="fas fa-file-pdf"></i></a>
+            </div>
         </div>
     </section>
-
+    
     <footer>
         <div class="container">
-            <div class="social" style="margin-bottom: 15px;">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+            <div style="margin-bottom: 25px;">
+                <h1 style="color: var(--color-secondary); font-size: 2em; margin: 0;">SP 2025</h1>
+                <p style="margin-top: 5px;">"Pemuda Pemudi Bergerak, Indonesia Bersatu"</p>
             </div>
-            <div class="footer-links" style="margin-bottom: 10px;">
+            
+            <div class="footer-links" style="margin-bottom: 20px;">
                 <a href="#">Tentang Kami</a> |
-                <a href="#">Unduh Panduan Resmi</a> |
-                <a href="#">Kontak Panitia</a> |
-                <a href="#">Kebijakan Privasi</a>
+                <a href="#">Unduh Logo Resmi</a> |
+                <a href="#">Layanan Pers</a> |
+                <a href="#">Kontak</a>
             </div>
-            <p>&copy; 2025 Panitia Nasional Hari Sumpah Pemuda. Didukung oleh Kemenpora RI.</p>
+            
+            <div class="social" style="margin-bottom: 20px;">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+            <p style="font-size: 0.85em; opacity: 0.7;">&copy; 2025 Panitia Nasional Hari Sumpah Pemuda. Didukung penuh oleh Kemenpora RI.</p>
         </div>
     </footer>
 
