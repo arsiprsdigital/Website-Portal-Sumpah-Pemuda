@@ -4,97 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sumpah Pemuda 2025 | Pemuda Pemudi Bergerak, Indonesia Bersatu</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* Variabel Warna */
+        /* Variabel Warna & Font */
         :root {
             --color-primary: #8B0000;      /* Maroon/Crimson Tua */
             --color-secondary: #DAA520;    /* Goldenrod (Emas) */
             --color-dark: #1f1f1f;
             --color-light: #f9f9f9;
             --font-main: 'Inter', sans-serif;
-            --header-height: 80px;
         }
 
-        /* Reset & Global */
+        /* Global & Reset */
         body {
             font-family: var(--font-main);
-            margin: 0;
-            padding: 0;
             color: var(--color-dark);
-            background-color: white;
             line-height: 1.7;
             text-rendering: optimizeLegibility;
         }
 
-        .container {
-            width: 90%;
-            max-width: 1300px;
-            margin: auto;
-            padding: 20px 0;
-        }
-
-        /* --- Header & Navigasi (Sticky & Blur) --- */
-        header {
-            background: rgba(255, 255, 255, 0.95);
+        /* --- Custom Navigasi --- */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.95) !important;
             backdrop-filter: blur(5px);
-            height: var(--header-height);
-            display: flex;
-            align-items: center;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-        
-        header .nav-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
         }
 
-        header .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        header .logo h1 {
-            margin: 0;
-            font-size: 1.8em;
-            color: var(--color-primary);
-            font-weight: 900;
-            margin-left: 10px;
-        }
-        
-        header nav ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        header nav ul li {
-            margin-left: 30px;
-        }
-        
-        header nav ul li a {
-            color: var(--color-dark);
-            text-decoration: none;
-            font-size: 15px;
+        .nav-link {
             font-weight: 600;
             position: relative;
+            color: var(--color-dark) !important;
             transition: color 0.3s;
         }
-        
-        header nav ul li a:hover {
-            color: var(--color-primary);
+
+        .nav-link:hover {
+            color: var(--color-primary) !important;
         }
         
-        /* Underline effect elegan */
-        header nav ul li a::after {
+        .nav-link::after {
             content: '';
             position: absolute;
             width: 0;
@@ -105,354 +60,134 @@
             transition: width 0.3s ease-out;
         }
 
-        header nav ul li a:hover::after {
+        .nav-link:hover::after {
             width: 100%;
         }
 
         .cta-button {
             background: var(--color-primary);
-            color: white;
+            color: white !important;
             padding: 10px 25px;
             text-decoration: none;
             border-radius: 5px;
-            margin-left: 30px;
             font-weight: 700;
             transition: all 0.3s ease;
             box-shadow: 0 4px 10px rgba(139, 0, 0, 0.3);
+            margin-left: 15px; 
         }
 
         .cta-button:hover {
             background: var(--color-secondary);
-            color: var(--color-dark);
+            color: var(--color-dark) !important;
             box-shadow: 0 6px 15px rgba(218, 165, 32, 0.5);
         }
 
-        /* --- HERO & SLIDESHOW ANIMASI --- */
+        /* --- HERO SLIDESHOW & ANIMASI --- */
         #hero {
-            background: var(--color-primary);
             min-height: 70vh;
             position: relative;
             overflow: hidden;
-            /* Tambahan Animasi Gradien */
             background: linear-gradient(-45deg, var(--color-primary), #4e0000, #DAA520, #b8860b);
             background-size: 400% 400%;
             animation: gradientAnimation 15s ease infinite;
         }
 
         .slideshow-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1; 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; 
         }
-
         .slideshow-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0; 
-            transition: opacity 1.5s ease-in-out;
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover; background-position: center;
+            opacity: 0; transition: opacity 1.5s ease-in-out;
             filter: brightness(0.9) contrast(1.1);
         }
-        
-        /* Overlay gelap */
         .slideshow-container::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.2);
-            z-index: 5;
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.2); z-index: 5;
         }
-
-        .slideshow-image.active {
-            opacity: 1;
-        }
+        .slideshow-image.active { opacity: 1; }
         
-        /* Keyframes untuk animasi gradien */
         @keyframes gradientAnimation {
-            0% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
-            100% {
-                background-position: 0% 50%;
-            }
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
-        /* --- HERO INTRO (TEKS DI BAWAH SLIDESHOW) --- */
-        #hero-intro {
-            background-color: var(--color-light); 
-            padding: 70px 0;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-
-        #hero-intro p {
-            font-weight: 600;
-            font-size: 1.1em;
-            letter-spacing: 2px;
-            color: var(--color-primary);
-            margin-bottom: 10px;
-        }
-
-        #hero-intro h2 {
-            font-size: 4.5em;
-            margin: 10px 0;
-            font-weight: 900;
-            line-height: 1.1;
-            color: var(--color-dark);
-        }
+        /* --- HERO INTRO & Judul Section --- */
+        #hero-intro { background-color: var(--color-light); padding: 70px 0; text-align: center; border-bottom: 1px solid #ddd; }
+        #hero-intro h2 { font-size: 4.5em; font-weight: 900; }
+        #hero-intro h2 span { color: var(--color-primary); }
         
-        #hero-intro h2 span {
-            color: var(--color-primary); 
-        }
-
-        #hero-intro h3 {
-            font-size: 1.6em;
-            font-weight: 300;
-            margin-top: 15px;
-            margin-bottom: 40px;
-            color: #555;
-        }
-
-        /* --- Konten & Gaya Umum --- */
-        section {
-            padding: 80px 0;
-        }
-
-        section:nth-child(even) {
-            background-color: white;
-        }
-        
-        #makna {
-             background-color: var(--color-light);
-        }
-
-        h4 {
-            font-size: 2.2em;
-            color: var(--color-primary);
-            margin-bottom: 10px;
-            font-weight: 700;
-            text-align: center;
-        }
-        
-        .section-subtitle {
-            text-align: center;
-            margin-bottom: 60px;
-            color: #666;
-            font-weight: 300;
-        }
+        .section-title { font-size: 2.2em; color: var(--color-primary); font-weight: 700; text-align: center; margin-bottom: 10px; }
+        .section-subtitle { text-align: center; margin-bottom: 60px; color: #666; font-weight: 300; }
         
         /* Blockquote elegan */
         #sejarah blockquote {
-            font-size: 1.3em;
-            border-left: 6px solid var(--color-secondary);
-            padding: 20px 30px;
-            margin: 40px auto;
-            max-width: 900px;
-            font-style: italic;
-            color: var(--color-dark);
-            background-color: white;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
-            border-radius: 8px;
+            font-size: 1.3em; border-left: 6px solid var(--color-secondary); padding: 20px 30px;
+            max-width: 900px; font-style: italic; background-color: white;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05); border-radius: 8px;
         }
 
-        /* --- Program Card (Profesional) --- */
-        .program-grid {
-            display: flex;
-            justify-content: space-between;
-            gap: 30px;
-            text-align: center;
-        }
-
+        /* --- Program Card & Galeri Styling (Custom) --- */
         .program-card {
-            background: white;
-            padding: 40px 20px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            width: 33%;
-            transition: all 0.4s ease;
+            background: white; padding: 40px 20px; border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); transition: all 0.4s ease;
             border-top: 5px solid var(--color-primary);
         }
-
-        .program-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-            border-top-color: var(--color-secondary);
-        }
-
-        .program-card i {
-            font-size: 3.5em;
-            color: var(--color-secondary);
-            margin-bottom: 20px;
-        }
-
-        .program-card h5 {
-            color: var(--color-primary);
-            font-size: 1.4em;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-        
-        /* --- CSS UNTUK SECTION GALERI --- */
-        #galeri {
-            background-color: var(--color-light);
-        }
-
-        .gallery-filter {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .gallery-filter .filter-btn {
-            background: white;
-            border: 2px solid var(--color-light);
-            color: var(--color-dark);
-            padding: 10px 20px;
-            margin: 5px;
-            font-family: var(--font-main);
-            font-weight: 600;
-            font-size: 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .gallery-filter .filter-btn:hover {
-            background: var(--color-secondary);
-            border-color: var(--color-secondary);
-            color: var(--color-dark);
-        }
-
-        .gallery-filter .filter-btn.active {
-            background: var(--color-primary);
-            border-color: var(--color-primary);
-            color: white;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
-        }
+        .program-card:hover { transform: translateY(-8px); box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); border-top-color: var(--color-secondary); }
 
         .gallery-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            height: 300px;
-            cursor: pointer;
+            position: relative; overflow: hidden; border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); height: 300px; cursor: pointer;
+            transition: opacity 0.4s ease, transform 0.4s ease; /* Tambahkan transisi untuk filter */
         }
-
         .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.4s ease-in-out;
+            width: 100%; height: 100%; object-fit: cover; transition: all 0.4s ease-in-out;
         }
-
         .gallery-item .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(to top, rgba(139, 0, 0, 0.8), rgba(0, 0, 0, 0.1));
-            color: white;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.4s ease-in-out;
+            color: white; padding: 20px; display: flex; flex-direction: column; justify-content: flex-end;
+            opacity: 0; transform: translateY(20px); transition: all 0.4s ease-in-out;
         }
+        .gallery-item:hover .overlay { opacity: 1; transform: translateY(0); }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item.hidden { opacity: 0; height: 0; margin-bottom: 0 !important; transform: scale(0.8); } /* Gaya untuk elemen yang tersembunyi */
 
-        .gallery-item:hover .overlay {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        .gallery-item .overlay h5 {
-            font-size: 1.3em;
-            font-weight: 700;
-            margin: 0;
-            margin-bottom: 5px;
-        }
-
-        .gallery-item .overlay p {
-            font-size: 0.9em;
-            margin: 0;
-        }
-
-        /* --- Footer (Dark Mode Elegan) --- */
-        footer {
-            background: var(--color-dark);
-            color: var(--color-light);
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        footer .social a {
-            color: var(--color-light);
-            font-size: 1.8em;
-            margin: 0 15px;
-            transition: color 0.3s;
-        }
-
-        footer .social a:hover {
-            color: var(--color-secondary);
-        }
-
-        footer .footer-links a {
-            color: var(--color-light);
-            text-decoration: none;
-            margin: 0 20px;
-            font-size: 0.95em;
-            transition: color 0.3s;
-        }
-        
-        footer .footer-links a:hover {
-            color: var(--color-secondary);
+        /* Responsif */
+        @media (max-width: 768px) {
+            #hero-intro h2 { font-size: 3em; }
+            .program-card { margin-bottom: 20px; }
+            .gallery-item { height: 250px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="container nav-content">
-            <div class="logo">
-                <i class="fas fa-handshake" style="font-size: 2em; color: var(--color-primary);"></i>
-                <h1>SP **2025**</h1>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <i class="fas fa-handshake me-2" style="font-size: 2em; color: var(--color-primary);"></i>
+                    <h1 class="h3 m-0" style="color: var(--color-primary); font-weight: 900;">SP 2025</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                        <li class="nav-item"><a class="nav-link" href="#hero-intro">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#sejarah">Sejarah</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#makna">Makna 2025</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#program">Program</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#galeri">Galeri</a></li>
+                        <li class="nav-item d-grid d-lg-block mt-2 mt-lg-0">
+                            <a class="cta-button btn" href="#">**Daftar Kolaborasi**</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="index.html">Beranda</a></li>
-                    <li><a href="#sejarah">Sejarah</a></li>
-                    <li><a href="makna-visual.html">Makna Visual</a></li>
-                    <li><a href="#makna">Makna 2025</a></li>
-                    <li><a href="#program">Program</a></li>
-                    <li><a href="#galeri">Galeri</a></li>
-                    <li><a class="cta-button" href="#">**Daftar Kolaborasi**</a></li>
-                </ul>
-            </nav>
-        </div>
+        </nav>
     </header>
 
     <section id="hero">
@@ -466,211 +201,243 @@
     </section>
 
     <section id="hero-intro">
-        <div class="container hero-content">
-            <p>SUMPAH PEMUDA 97 TAHUN</p>
-            <h2><span>Bergerak,</span> Bersatu.</h2>
-            <h3>"Pemuda Pemudi Bergerak, Indonesia Bersatu" - 28 Oktober 2025</h3>
-            <a href="#program" class="cta-button" style="background: var(--color-secondary); color: var(--color-dark); font-size: 1.1em; padding: 12px 30px;">
-                Temukan Aksi Nyata Kami <i class="fas fa-arrow-right"></i>
+        <div class="container py-5">
+            <p class="fw-semibold fs-5 text-primary mb-2 text-uppercase" style="letter-spacing: 2px;">SUMPAH PEMUDA 97 TAHUN</p>
+            <h2 class="mb-2"><span>Bergerak,</span> Bersatu.</h2>
+            <h3 class="fs-4 fw-light text-secondary mb-4">"Pemuda Pemudi Bergerak, Indonesia Bersatu" - 28 Oktober 2025</h3>
+            <a href="#program" class="btn btn-lg cta-button" style="background: var(--color-secondary) !important; color: var(--color-dark) !important;">
+                Temukan Aksi Nyata Kami <i class="fas fa-arrow-right ms-2"></i>
             </a>
         </div>
     </section>
     
-    <section id="sejarah">
+    <section id="sejarah" class="py-5">
         <div class="container">
-            <h4>Pondasi Kuat: Ikrar Sumpah Pemuda 1928</h4>
+            <h4 class="section-title">Pondasi Kuat: Ikrar Sumpah Pemuda 1928</h4>
             <p class="section-subtitle">Tiga janji yang menjadi landasan utama persatuan bangsa Indonesia.</p>
-            <blockquote>
+            
+            <blockquote class="text-center mx-auto">
                 "Kami putra dan putri Indonesia, mengaku **bertumpah darah yang satu, tanah Indonesia**."<br>
                 "Kami putra dan putri Indonesia, mengaku **berbangsa yang satu, bangsa Indonesia**."<br>
                 "Kami putra dan putri Indonesia, menjunjung **bahasa persatuan, bahasa Indonesia**."
             </blockquote>
-            <p style="text-align: center; max-width: 800px; margin: auto;">Semangat persatuan ini telah diuji oleh zaman. Hari ini, 28 Oktober 2025, kita tegaskan kembali relevansinya di era digital dan globalisasi.</p>
+            
+            <p class="text-center text-muted mx-auto" style="max-width: 800px;">Semangat persatuan ini telah diuji oleh zaman. Hari ini, 28 Oktober 2025, kita tegaskan kembali relevansinya di era digital dan globalisasi.</p>
         </div>
     </section>
 
-    <section id="makna">
+    <section id="makna" class="py-5 bg-light">
         <div class="container">
-            <h4>Makna Sumpah Pemuda Kontemporer</h4>
+            <h4 class="section-title">Makna Sumpah Pemuda Kontemporer</h4>
             <p class="section-subtitle">Menerjemahkan Ikrar 1928 ke dalam aksi nyata yang progresif dan kolaboratif.</p>
-            <div class="program-grid">
-                <div class="program-card">
-                    <i class="fas fa-lightbulb"></i>
-                    <h5>Progresif & Inovatif</h5>
-                    <p>Pemuda sebagai motor penggerak inovasi di berbagai sektor, berani mengambil risiko untuk kemajuan bangsa.</p>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="program-card text-center">
+                        <i class="fas fa-lightbulb mb-3" style="font-size: 3.5em; color: var(--color-secondary);"></i>
+                        <h5 class="text-primary fs-4 fw-bold mb-3">Progresif & Inovatif</h5>
+                        <p>Pemuda sebagai motor penggerak inovasi di berbagai sektor, berani mengambil risiko untuk kemajuan bangsa.</p>
+                    </div>
                 </div>
-                <div class="program-card">
-                    <i class="fas fa-users-cog"></i>
-                    <h5>Kolaborasi Lintas Batas</h5>
-                    <p>Persatuan dalam tindakan nyata, bekerja sama lintas daerah dan disiplin untuk memecahkan masalah nasional.</p>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="program-card text-center">
+                        <i class="fas fa-users-cog mb-3" style="font-size: 3.5em; color: var(--color-secondary);"></i>
+                        <h5 class="text-primary fs-4 fw-bold mb-3">Kolaborasi Lintas Batas</h5>
+                        <p>Persatuan dalam tindakan nyata, bekerja sama lintas daerah dan disiplin untuk memecahkan masalah nasional.</p>
+                    </div>
                 </div>
-                <div class="program-card">
-                    <i class="fas fa-shield-alt"></i>
-                    <h5>Ketahanan Jati Diri</h5>
-                    <p>Menjaga etika, literasi digital, dan integritas di tengah gempuran informasi dan budaya luar.</p>
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="program-card text-center">
+                        <i class="fas fa-shield-alt mb-3" style="font-size: 3.5em; color: var(--color-secondary);"></i>
+                        <h5 class="text-primary fs-4 fw-bold mb-3">Ketahanan Jati Diri</h5>
+                        <p>Menjaga etika, literasi digital, dan integritas di tengah gempuran informasi dan budaya luar.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="program">
+    <section id="program" class="py-5">
         <div class="container">
-            <h4>Agenda Aksi Pemuda 2025</h4>
+            <h4 class="section-title">Agenda Aksi Pemuda 2025</h4>
             <p class="section-subtitle">Waktunya bergerak, wujudkan janji persatuan melalui program berdampak.</p>
-            <div class="program-grid">
-                <div class="program-card" style="border-top-color: #DAA520;">
-                    <i class="fas fa-code"></i>
-                    <h5>Youth Tech Summit & Hackathon</h5>
-                    <p>Puncak kompetisi teknologi untuk menemukan solusi cerdas berbasis digital.</p>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="program-card text-center" style="border-top-color: var(--color-secondary);">
+                        <i class="fas fa-code mb-3" style="font-size: 3.5em; color: var(--color-secondary);"></i>
+                        <h5 class="text-primary fs-5 fw-bold mb-3">Youth Tech Summit & Hackathon</h5>
+                        <p>Puncak kompetisi teknologi untuk menemukan solusi cerdas berbasis digital.</p>
+                    </div>
                 </div>
-                <div class="program-card" style="border-top-color: #008000;">
-                    <i class="fas fa-leaf"></i>
-                    <h5>Gerakan Ekologi Nasional</h5>
-                    <p>Aksi serentak pemuda dalam mitigasi bencana dan program keberlanjutan lingkungan.</p>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="program-card text-center" style="border-top-color: #008000;">
+                        <i class="fas fa-leaf mb-3" style="font-size: 3.5em; color: #008000;"></i>
+                        <h5 class="text-primary fs-5 fw-bold mb-3">Gerakan Ekologi Nasional</h5>
+                        <p>Aksi serentak pemuda dalam mitigasi bencana dan program keberlanjutan lingkungan.</p>
+                    </div>
                 </div>
-                <div class="program-card" style="border-top-color: #FFA500;">
-                    <i class="fas fa-microphone-alt"></i>
-                    <h5>Festival Suara Budaya</h5>
-                    <p>Platform ekspresi seni dan budaya daerah yang dikemas secara modern dan inklusif.</p>
+                <div class="col-lg-4 col-md-12 mb-4">
+                    <div class="program-card text-center" style="border-top-color: #FFA500;">
+                        <i class="fas fa-microphone-alt mb-3" style="font-size: 3.5em; color: #FFA500;"></i>
+                        <h5 class="text-primary fs-5 fw-bold mb-3">Festival Suara Budaya</h5>
+                        <p>Platform ekspresi seni dan budaya daerah yang dikemas secara modern dan inklusif.</p>
+                    </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 50px;">
-                <a href="#" class="cta-button" style="background: var(--color-primary); color: white; font-size: 1.1em;">Lihat Panduan & Mekanisme Program <i class="fas fa-file-pdf"></i></a>
+
+            <div class="text-center mt-4">
+                <a href="#" class="btn btn-lg cta-button">Lihat Panduan & Mekanisme Program <i class="fas fa-file-pdf ms-2"></i></a>
             </div>
         </div>
     </section>
     
-    <section id="galeri">
+    <section id="galeri" class="py-5 bg-light">
         <div class="container">
-            <h4>Galeri Pergerakan Pemuda 2025</h4>
-            <p class="section-subtitle">Visualisasi semangat dan aksi nyata Sumpah Pemuda ke-97. <br>Termasuk foto-foto terbaru dari Upacara Puncak 28 Oktober 2025.</p>
+            <h4 class="section-title">Galeri Pergerakan Pemuda 2025</h4>
+            <p class="section-subtitle">Visualisasi semangat dan aksi nyata Sumpah Pemuda ke-97.</p>
 
-            <div class="gallery-filter">
-                <button class="filter-btn active" data-filter="all">Semua</button>
-                <button class="filter-btn" data-filter="upacara">Upacara Puncak 2025</button>
-                <button class="filter-btn" data-filter="rangkaian">Rangkaian Acara</button>
-                <button class="filter-btn" data-filter="sejarah">Jejak Sejarah</button>
+            <div class="gallery-filter text-center mb-4">
+                <button class="btn btn-sm btn-primary active me-2 mb-2 filter-btn" data-filter="all">Semua</button>
+                <button class="btn btn-sm btn-outline-dark me-2 mb-2 filter-btn" data-filter="upacara">Upacara Puncak 2025</button>
+                <button class="btn btn-sm btn-outline-dark me-2 mb-2 filter-btn" data-filter="rangkaian">Rangkaian Acara</button>
+                <button class="btn btn-sm btn-outline-dark mb-2 filter-btn" data-filter="sejarah">Jejak Sejarah</button>
             </div>
 
             <div class="gallery-grid">
                 
                 <div class="gallery-item" data-category="upacara">
-                    <img src="URL_GALERI_UPACARA_1" alt="Upacara Puncak HSP 2025">
-                    <div class="overlay">
-                        <h5>Upacara Puncak HSP 2025</h5>
-                        <p>Stadion Utama Gelora Bung Karno, Jakarta</p>
-                    </div>
+                    <img src="URL_GALERI_UPACARA_1" class="img-fluid" alt="Upacara Puncak HSP 2025">
+                    <div class="overlay"><h5>Upacara Puncak HSP 2025</h5><p class="small">Stadion Utama Gelora Bung Karno, Jakarta</p></div>
                 </div>
 
                 <div class="gallery-item" data-category="rangkaian">
-                     <img src="URL_GALERI_RANGKAIAN_2" alt="Youth Tech Summit 2025">
-                    <div class="overlay">
-                        <h5>Youth Tech Summit</h5>
-                        <p>Rangkaian Acara (Oktober 2025)</p>
-                    </div>
+                    <img src="URL_GALERI_RANGKAIAN_2" class="img-fluid" alt="Youth Tech Summit 2025">
+                    <div class="overlay"><h5>Youth Tech Summit</h5><p class="small">Rangkaian Acara (Oktober 2025)</p></div>
                 </div>
 
                 <div class="gallery-item" data-category="upacara">
-                    <img src="URL_GALERI_UPACARA_3" alt="Ikrar Sumpah Pemuda">
-                    <div class="overlay">
-                        <h5>Pembacaan Ikrar Sumpah Pemuda</h5>
-                        <p>Oleh perwakilan pemuda-pemudi berprestasi.</p>
-                    </div>
+                    <img src="URL_GALERI_UPACARA_3" class="img-fluid" alt="Ikrar Sumpah Pemuda">
+                    <div class="overlay"><h5>Pembacaan Ikrar Sumpah Pemuda</h5><p class="small">Oleh perwakilan pemuda-pemudi berprestasi.</p></div>
                 </div>
-
+                
                 <div class="gallery-item" data-category="sejarah">
-                    <img src="URL_GALERI_SEJARAH_4" alt="Museum Sumpah Pemuda">
-                    <div class="overlay">
-                        <h5>Museum Sumpah Pemuda</h5>
-                        <p>Mengenang kembali semangat Kongres Pemuda II 1928.</p>
-                    </div>
+                    <img src="URL_GALERI_SEJARAH_4" class="img-fluid" alt="Museum Sumpah Pemuda">
+                    <div class="overlay"><h5>Museum Sumpah Pemuda</h5><p class="small">Mengenang kembali semangat Kongres Pemuda II 1928.</p></div>
                 </div>
 
                 <div class="gallery-item" data-category="rangkaian">
-                    <img src="URL_GALERI_RANGKAIAN_5" alt="Gerakan Ekologi Nasional">
-                    <div class="overlay">
-                        <h5>Gerakan Ekologi Nasional</h5>
-                        <p>Aksi nyata pemuda di 38 Provinsi.</p>
-                    </div>
+                    <img src="URL_GALERI_RANGKAIAN_5" class="img-fluid" alt="Gerakan Ekologi Nasional">
+                    <div class="overlay"><h5>Gerakan Ekologi Nasional</h5><p class="small">Aksi nyata pemuda di 38 Provinsi.</p></div>
                 </div>
 
                 <div class="gallery-item" data-category="upacara">
-                    <img src="URL_GALERI_UPACARA_6" alt="Penampilan Budaya">
-                    <div class="overlay">
-                        <h5>Kolaborasi Harmoni Nusantara</h5>
-                        <p>Persembahan seni dan budaya di Upacara Puncak.</p>
-                    </div>
+                    <img src="URL_GALERI_UPACARA_6" class="img-fluid" alt="Penampilan Budaya">
+                    <div class="overlay"><h5>Kolaborasi Harmoni Nusantara</h5><p class="small">Persembahan seni dan budaya di Upacara Puncak.</p></div>
                 </div>
 
                 <div class="gallery-item" data-category="rangkaian">
-                    <img src="URL_GALERI_RANGKAIAN_7" alt="Festival Suara Budaya">
-                    <div class="overlay">
-                        <h5>Festival Suara Budaya</h5>
-                        <p>Ekspresi kreatif pemuda di bidang seni.</p>
-                    </div>
+                    <img src="URL_GALERI_RANGKAIAN_7" class="img-fluid" alt="Festival Suara Budaya">
+                    <div class="overlay"><h5>Festival Suara Budaya</h5><p class="small">Ekspresi kreatif pemuda di bidang seni.</p></div>
                 </div>
 
                 <div class="gallery-item" data-category="sejarah">
-                    <img src="URL_GALERI_SEJARAH_8" alt="Tokoh Sumpah Pemuda">
-                    <div class="overlay">
-                        <h5>Tokoh-Tokoh Sumpah Pemuda</h5>
-                        <p>Para pahlawan yang menyatukan bangsa.</p>
-                    </div>
+                    <img src="URL_GALERI_SEJARAH_8" class="img-fluid" alt="Tokoh Sumpah Pemuda">
+                    <div class="overlay"><h5>Tokoh-Tokoh Sumpah Pemuda</h5><p class="small">Para pahlawan yang menyatukan bangsa.</p></div>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <div style="margin-bottom: 25px;">
-                <h1 style="color: var(--color-secondary); font-size: 2em; margin: 0;">SP 2025</h1>
-                <p style="margin-top: 5px;">"Pemuda Pemudi Bergerak, Indonesia Bersatu"</p>
+    <footer class="py-5" style="background: var(--color-dark); color: var(--color-light);">
+        <div class="container text-center">
+            <div class="mb-4">
+                <h1 class="text-warning fs-3 mb-1">SP 2025</h1>
+                <p class="small text-white-50">"Pemuda Pemudi Bergerak, Indonesia Bersatu"</p>
             </div>
             
-            <div class="footer-links" style="margin-bottom: 20px;">
+            <div class="footer-links mb-4">
                 <a href="#">Tentang Kami</a> |
                 <a href="#">Unduh Logo Resmi</a> |
                 <a href="#">Layanan Pers</a> |
                 <a href="#">Kontak</a>
             </div>
             
-            <div class="social" style="margin-bottom: 20px;">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <div class="social mb-4">
+                <a href="#" class="text-white-50 mx-2 fs-4 transition-3s"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white-50 mx-2 fs-4 transition-3s"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white-50 mx-2 fs-4 transition-3s"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="text-white-50 mx-2 fs-4 transition-3s"><i class="fab fa-linkedin-in"></i></a>
             </div>
 
-            <p style="font-size: 0.85em; opacity: 0.7;">&copy; 2025 Panitia Nasional Hari Sumpah Pemuda. Didukung penuh oleh Kemenpora RI.</p>
+            <p class="small opacity-75">&copy; 2025 Panitia Nasional Hari Sumpah Pemuda. Didukung penuh oleh Kemenpora RI.</p>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
     <script>
-        // Skrip JavaScript sederhana untuk slideshow
+        // 1. Skrip Slideshow Hero
         let slideIndex = 0;
         showSlides();
 
         function showSlides() {
-            let i;
             let slides = document.getElementsByClassName("slideshow-image");
             if (slides.length === 0) return;
             
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.opacity = "0"; // Sembunyikan semua gambar
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.opacity = "0";
+                slides[i].classList.remove("active");
             }
             slideIndex++;
             if (slideIndex > slides.length) {slideIndex = 1} 
             
             if (slides[slideIndex-1]) {
-                 slides[slideIndex-1].style.opacity = "1"; // Tampilkan gambar aktif
+                 slides[slideIndex-1].style.opacity = "1";
+                 slides[slideIndex-1].classList.add("active");
             }
            
-            setTimeout(showSlides, 5000); // Ganti gambar setiap 5 detik
+            setTimeout(showSlides, 5000); 
         }
-        
-        // Catatan: Fungsionalitas filter galeri memerlukan kode JavaScript tambahan.
+
+        // 2. Skrip Filter Galeri
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Hapus status 'active' dari semua tombol dan tambahkan 'btn-outline-dark'
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'btn-primary');
+                        btn.classList.add('btn-outline-dark');
+                    });
+
+                    // Set status 'active' dan 'btn-primary' pada tombol yang diklik
+                    button.classList.add('active', 'btn-primary');
+                    button.classList.remove('btn-outline-dark');
+
+                    const filterValue = button.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        
+                        // Sembunyikan semua item
+                        item.classList.add('hidden');
+                        
+                        // Tunda tampilan agar transisi terlihat
+                        setTimeout(() => {
+                             // Jika filter 'all' atau kategori item cocok
+                            if (filterValue === 'all' || itemCategory === filterValue) {
+                                item.classList.remove('hidden');
+                            }
+                        }, 400); // 400ms sesuai dengan transisi CSS
+                    });
+                });
+            });
+        });
+
     </script>
 
 </body>
