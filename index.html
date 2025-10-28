@@ -130,9 +130,13 @@
         /* --- MODIFIKASI: HERO HANYA SLIDESHOW --- */
         #hero {
             background: var(--color-primary);
-            min-height: 70vh; /* Ketinggian disesuaikan (sebelumnya 85vh) */
+            min-height: 70vh;
             position: relative;
             overflow: hidden;
+            /* Tambahkan animasi gradien di sini */
+            background: linear-gradient(-45deg, var(--color-primary), #4e0000, #DAA520, #b8860b);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
         }
 
         /* Slideshow Container */
@@ -155,6 +159,8 @@
             background-position: center;
             opacity: 0; 
             transition: opacity 1.5s ease-in-out;
+            /* Tambahkan filter untuk menyatu dengan background gradien */
+            filter: brightness(0.9) contrast(1.1); /* Sedikit penyesuaian gambar */
         }
         
         /* Overlay gelap untuk membuat gambar lebih sinematik */
@@ -170,12 +176,25 @@
         }
 
         .slideshow-image.active {
-            opacity: 1; /* Gambar yang aktif akan terlihat */
+            opacity: 1;
         }
         
+        /* Keyframes untuk animasi gradien */
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
         /* --- SECTION BARU: INTRO DI BAWAH HERO --- */
         #hero-intro {
-            background-color: var(--color-light); /* Latar belakang terang */
+            background-color: var(--color-light); 
             padding: 70px 0;
             text-align: center;
             border-bottom: 1px solid #ddd;
@@ -190,11 +209,11 @@
         }
 
         #hero-intro h2 {
-            font-size: 4.5em; /* Ukuran font disesuaikan */
+            font-size: 4.5em;
             margin: 10px 0;
             font-weight: 900;
             line-height: 1.1;
-            color: var(--color-dark); /* Warna teks diubah */
+            color: var(--color-dark);
         }
         
         #hero-intro h2 span {
@@ -202,11 +221,11 @@
         }
 
         #hero-intro h3 {
-            font-size: 1.6em; /* Ukuran font disesuaikan */
+            font-size: 1.6em;
             font-weight: 300;
             margin-top: 15px;
             margin-bottom: 40px;
-            color: #555; /* Warna teks diubah */
+            color: #555;
         }
 
         /* --- Konten & Gaya Umum --- */
@@ -214,13 +233,12 @@
             padding: 80px 0;
         }
 
-        /* Menghapus background agar #hero-intro dan #sejarah menyatu */
         section:nth-child(even) {
-            background-color: white; /* Diubah dari light */
+            background-color: white;
         }
         
         #makna {
-             background-color: var(--color-light); /* Diberi background light */
+             background-color: var(--color-light);
         }
 
         h4 {
@@ -398,7 +416,7 @@
         </section>
 
     <section id="hero-intro">
-        <div class="hero-content">
+        <div class="container hero-content">
             <p>SUMPAH PEMUDA 97 TAHUN</p>
             <h2><span>Bergerak,</span> Bersatu.</h2>
             <h3>"Pemuda Pemudi Bergerak, Indonesia Bersatu" - 28 Oktober 2025</h3>
