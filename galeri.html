@@ -1,1 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri | Sumpah Pemuda 2025</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        /* Variabel Warna & Font */
+        :root {
+            --color-primary: #8B0000;      /* Maroon/Crimson Tua */
+            --color-secondary: #DAA520;    /* Goldenrod (Emas) */
+            --color-dark: #1f1f1f;
+            --color-light: #f9f9f9;
+            --font-main: 'Inter', sans-serif;
+        }
+
+        /* Global & Reset */
+        body {
+            font-family: var(--font-main);
+            color: var(--color-dark);
+            line-height: 1.7;
+            text-rendering: optimizeLegibility;
+            background-color: var(--color-light); /* Set background untuk halaman galeri */
+        }
+
+        /* --- Custom Navigasi (Sama dengan index.html) --- */
+        .navbar {
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            background: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(5px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-link { font-weight: 600; position: relative; color: var(--color-dark) !important; transition: color 0.3s; }
+        .nav-link:hover { color: var(--color-primary) !important; }
+        .nav-link::after { content: ''; position: absolute; width: 0; height: 3px; bottom: -5px; left: 0; background-color: var(--color-secondary); transition: width 0.3s ease-out; }
+        .nav-link:hover::after { width: 100%; }
+        .cta-button { background: var(--color-primary); color: white !important; padding: 10px 25px; border-radius: 5px; font-weight: 700; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(139, 0, 0, 0.3); margin-left: 15px; }
+        .cta-button:hover { background: var(--color-secondary); color: var(--color-dark) !important; box-shadow: 0 6px 15px rgba(218, 165, 32, 0.5); }
+
+        /* Judul Section */
+        .section-title { font-size: 2.2em; color: var(--color-primary); font-weight: 700; text-align: center; margin-bottom: 10px; }
+        .section-subtitle { text-align: center; margin-bottom: 60px; color: #666; font-weight: 300; }
+
+        /* --- Galeri Grid dan Item --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding-bottom: 50px;
+        }
+
+        .gallery-item {
+            position: relative; overflow: hidden; border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); height: 300px; cursor: pointer;
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+        .gallery-item img {
+            width: 100%; height: 100%; object-fit: cover; transition: all 0.4s ease-in-out;
+        }
+        .gallery-item .overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to top, rgba(139, 0, 0, 0.8), rgba(0, 0, 0, 0.1));
+            color: white; padding: 20px; display: flex; flex-direction: column; justify-content: flex-end;
+            opacity: 0; transform: translateY(20px); transition: all 0.4s ease-in-out;
+        }
+        .gallery-item:hover .overlay { opacity: 1; transform: translateY(0); }
+        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-item.hidden { opacity: 0; height: 0; margin-bottom: 0 !important; transform: scale(0.8); }
+
+        /* Footer */
+        .footer-links a { color: var(--color-light); text-decoration: none; margin: 0 10px; font-size: 0.95em; transition: color 0.3s; }
+        .footer-links a:hover { color: var(--color-secondary); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <i class="fas fa-handshake me-2" style="font-size: 2em; color: var(--color-primary);"></i>
+                    <h1 class="h3 m-0" style="color: var(--color-primary); font-weight: 900;">SP 2025</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+                        <li class="nav-item"><a class="nav-link" href="index.html#hero-intro">Beranda</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#sejarah">Sejarah</a></li>
+                        <li class="nav-item"><a class="nav-link" href="makna-visual.html">Makna Visual</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#makna">Makna 2025</a></li>
+                        <li class="nav-item"><a class="nav-link" href="index.html#program">Program</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="galeri.html">Galeri</a></li>
+                        <li class="nav-item d-grid d-lg-block mt-2 mt-lg-0">
+                            <a class="cta-button btn" href="#">**Daftar Kolaborasi**</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="galeri" class="py-5">
+        <div class="container">
+            <h4 class="section-title">🖼️ Galeri Pergerakan Pemuda 2025</h4>
+            <p class="section-subtitle">Visualisasi semangat dan aksi nyata Sumpah Pemuda ke-97, dari jejak sejarah hingga Upacara Puncak 28 Oktober 2025.</p>
+
+            <div class="gallery-filter text-center mb-4">
+                <button class="btn btn-sm btn-primary active me-2 mb-2 filter-btn" data-filter="all">Semua</button>
+                <button class="btn btn-sm btn-outline-dark me-2 mb-2 filter-btn" data-filter="upacara">Upacara Puncak 2025</button>
+                <button class="btn btn-sm btn-outline-dark me-2 mb-2 filter-btn" data-filter="rangkaian">Rangkaian Acara</button>
+                <button class="btn btn-sm btn-outline-dark mb-2 filter-btn" data-filter="sejarah">Jejak Sejarah</button>
+            </div>
+
+            <div class="gallery-grid">
+                
+                <div class="gallery-item" data-category="upacara">
+                    <img src="URL_GALERI_UPACARA_1" class="img-fluid" alt="Upacara Puncak HSP 2025">
+                    <div class="overlay"><h5>Upacara Puncak HSP 2025</h5><p class="small">Stadion Utama Gelora Bung Karno, Jakarta</p></div>
+                </div>
+
+                <div class="gallery-item" data-category="rangkaian">
+                    <img src="URL_GALERI_RANGKAIAN_2" class="img-fluid" alt="Youth Tech Summit 2025">
+                    <div class="overlay"><h5>Youth Tech Summit</h5><p class="small">Rangkaian Acara (Oktober 2025)</p></div>
+                </div>
+
+                <div class="gallery-item" data-category="upacara">
+                    <img src="URL_GALERI_UPACARA_3" class="img-fluid" alt="Ikrar Sumpah Pemuda">
+                    <div class="overlay"><h5>Pembacaan Ikrar Sumpah Pemuda</h5><p class="small">Oleh perwakilan pemuda-pemudi berprestasi.</p></div>
+                </div>
+                
+                <div class="gallery-item" data-category="sejarah">
+                    <img src="URL_GALERI_SEJARAH_4" class="img-fluid" alt="Museum Sumpah Pemuda">
+                    <div class="overlay"><h5>Museum Sumpah Pemuda</h5><p class="small">Mengenang kembali semangat Kongres Pemuda II 1928.</p></div>
+                </div>
+
+                <div class="gallery-item" data-category="rangkaian">
+                    <img src="URL_GALERI_RANGKAIAN_5" class="img-fluid" alt="Gerakan Ekologi Nasional">
+                    <div class="overlay"><h5>Gerakan Ekologi Nasional</h5><p class="small">Aksi nyata pemuda di 38 Provinsi.</p></div>
+                </div>
+
+                <div class="gallery-item" data-category="upacara">
+                    <img src="URL_GALERI_UPACARA_6" class="img-fluid" alt="Penampilan Budaya">
+                    <div class="overlay"><h5>Kolaborasi Harmoni Nusantara</h5><p class="small">Persembahan seni dan budaya di Upacara Puncak.</p></div>
+                </div>
+
+                <div class="gallery-item" data-category="rangkaian">
+                    <img src="URL_GALERI_RANGKAIAN_7" class="img-fluid" alt="Festival Suara Budaya">
+                    <div class="overlay"><h5>Festival Suara Budaya</h5><p class="small">Ekspresi kreatif pemuda di bidang seni.</p></div>
+                </div>
+
+                <div class="gallery-item" data-category="sejarah">
+                    <img src="URL_GALERI_SEJARAH_8" class="img-fluid" alt="Tokoh Sumpah Pemuda">
+                    <div class="overlay"><h5>Tokoh-Tokoh Sumpah Pemuda</h5><p class="small">Para pahlawan yang menyatukan bangsa.</p></div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-5" style="background: var(--color-dark); color: var(--color-light);">
+        <div class="container text-center">
+            <div class="mb-4">
+                <h1 class="text-warning fs-3 mb-1">SP 2025</h1>
+                <p class="small text-white-50">"Pemuda Pemudi Bergerak, Indonesia Bersatu"</p>
+            </div>
+            
+            <div class="footer-links mb-4">
+                <a href="#">Tentang Kami</a> |
+                <a href="#">Unduh Logo Resmi</a> |
+                <a href="#">Layanan Pers</a> |
+                <a href="#">Kontak</a>
+            </div>
+            
+            <div class="social mb-4">
+                <a href="#" class="text-white-50 mx-2 fs-4 transition-3s"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="text-white-50 mx-2 fs-4 transition-3s"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-white-50 mx-2 fs-4 transition-3s"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="text-white-50 mx-2 fs-4 transition-3s"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+
+            <p class="small opacity-75">&copy; 2025 Panitia Nasional Hari Sumpah Pemuda. Didukung penuh oleh Kemenpora RI.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update tampilan tombol
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active', 'btn-primary');
+                        btn.classList.add('btn-outline-dark');
+                    });
+                    button.classList.add('active', 'btn-primary');
+                    button.classList.remove('btn-outline-dark');
+
+                    const filterValue = button.getAttribute('data-filter');
+
+                    galleryItems.forEach(item => {
+                        const itemCategory = item.getAttribute('data-category');
+                        
+                        // Sembunyikan semua item dengan transisi
+                        item.classList.add('hidden');
+                        
+                        // Tunda tampilan agar transisi 'hidden' terlihat dulu
+                        setTimeout(() => {
+                            if (filterValue === 'all' || itemCategory === filterValue) {
+                                item.classList.remove('hidden');
+                            }
+                        }, 400); // Durasi tunda sesuai transisi CSS
+                    });
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
